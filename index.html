@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.converter {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  padding: 8px;
+  margin-right: 10px;
+  width: 100px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: rgb(28, 26, 26);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: black;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="converter">
+          <h1>Temperature Converter</h1>
+          <div class="input-group">
+            <input type="number" id="inputCelsius" placeholder="In Celsius">
+            <button onclick="convertToCelsius()">To Celsius</button>
+          </div>
+          <div class="input-group">
+            <input type="number" id="inputFahrenheit" placeholder="In Fahrenheit">
+            <button onclick="convertToFahrenheit()"> Fahrenheit</button>
+          </div>
+          <div class="input-group">
+            <input type="number" id="inputKelvin" placeholder="In Kelvin">
+            <button onclick="convertToKelvin()">To Kelvin</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        function convertToCelsius() {
+  const inputFahrenheit = document.getElementById('inputFahrenheit');
+  const inputKelvin = document.getElementById('inputKelvin');
+  const fahrenheit = parseFloat(inputFahrenheit.value);
+  const celsius = (fahrenheit - 32) * (5 / 9);
+  const kelvin = celsius + 273.15;
+
+  document.getElementById('inputCelsius').value = celsius.toFixed(2);
+  inputKelvin.value = kelvin.toFixed(2);
+}
+
+function convertToFahrenheit() {
+  const inputCelsius = document.getElementById('inputCelsius');
+  const inputKelvin = document.getElementById('inputKelvin');
+  const celsius = parseFloat(inputCelsius.value);
+  const fahrenheit = celsius * (9 / 5) + 32;
+  const kelvin = celsius + 273.15;
+
+  document.getElementById('inputFahrenheit').value = fahrenheit.toFixed(2);
+  inputKelvin.value = kelvin.toFixed(2);
+}
+
+function convertToKelvin() {
+  const inputCelsius = document.getElementById('inputCelsius');
+  const inputFahrenheit = document.getElementById('inputFahrenheit');
+  const celsius = parseFloat(inputCelsius.value);
+  const kelvin = celsius + 273.15;
+  const fahrenheit = celsius * (9 / 5) + 32;
+
+  inputFahrenheit.value = fahrenheit.toFixed(2);
+  document.getElementById('inputKelvin').value = kelvin.toFixed(2);
+}
+
+      </script>
+</body>
+</html>
